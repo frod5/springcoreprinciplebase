@@ -1,4 +1,4 @@
-package hello.core;
+package hello.core.discount;
 
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Grade;
