@@ -2,19 +2,24 @@ package hello.core.member;
 
 public class MemberServiceImpl implements MemberService {
 
-    private final MemberRepository memoryMemberRepository;
+    private final MemberRepository memberRepository;
 
-    public MemberServiceImpl(MemberRepository memoryMemberRepository) {
-        this.memoryMemberRepository = memoryMemberRepository;
+    public MemberServiceImpl(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
 
     @Override
     public void join(Member member) {
-        memoryMemberRepository.save(member);
+        memberRepository.save(member);
     }
 
     @Override
     public Member findMember(Long id) {
-        return memoryMemberRepository.findById(id);
+        return memberRepository.findById(id);
+    }
+
+    //테스트 용도
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
     }
 }
