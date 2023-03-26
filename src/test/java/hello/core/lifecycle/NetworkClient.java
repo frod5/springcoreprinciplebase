@@ -1,5 +1,8 @@
 package hello.core.lifecycle;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 //implements InitializingBean, DisposableBean 이 방식은 스프링에서만 의존해서 최근에는 거의 사용하지 않는다.
 public class NetworkClient {
     private String url;
@@ -26,12 +29,14 @@ public class NetworkClient {
         System.out.println("close: "+url);
     }
 
+    @PostConstruct
     public void init() {
         System.out.println("NetworkClient.init");
         connect();
         call("초기화 연결 메시");
     }
 
+    @PreDestroy
     public void close() {
         System.out.println("NetworkClient.close");
         disconnect();
