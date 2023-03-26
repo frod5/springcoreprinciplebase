@@ -18,7 +18,7 @@ public class BeanLifeCycleTest {
     @Configuration
     static class LifeCycleConfig {
 
-        @Bean
+        @Bean(initMethod = "init", destroyMethod = "close") //destroyMethod는 추론을 사용한다. close, shutdown이라는 메소드가 존재하면 따로 destroyMethod를 선언하지 않아도 추론하여 호출한다. destroyMethod를 사용하고 싶지 않으면 destroyMethod = "" 지정.
         public NetworkClient networdClient() {
             NetworkClient networkClient = new NetworkClient();
             networkClient.setUrl("http://hello-spring.dev");
