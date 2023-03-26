@@ -15,8 +15,8 @@ public class LogDemoController {
 
     private final LogDemoService logDemoService;
 
-    private final ObjectProvider<MyLogger> myLoggerProvider;
-    //private final MyLogger myLogger; 해당 객체는 SCOPE가 request여서 스프링 서버가 뜰때, request요청이 없어서 주입이 되지못한다. 해결방법으로 ObjectProvider로 해결.
+//    private final ObjectProvider<MyLogger> myLoggerProvider;
+    private final MyLogger myLogger;
 
 
 
@@ -24,7 +24,6 @@ public class LogDemoController {
     @ResponseBody
     public String logDemo(HttpServletRequest request) {
         String requestURL = request.getRequestURL().toString();
-        MyLogger myLogger = myLoggerProvider.getObject();
 
         myLogger.setRequestURL(requestURL);
         myLogger.log("controller test");
